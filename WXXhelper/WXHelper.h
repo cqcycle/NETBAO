@@ -10,11 +10,11 @@
 #import <UIKit/UIKit.h>
 @interface WXHelper : NSObject
 
-@property (nonatomic,strong) UIWindow *window;
-@property (nonatomic,strong) UITabBarController *barVC;
-@property (nonatomic, copy) NSString  *holdI;
 
-+ (instancetype)sharedWXHelper;
+@property (nonatomic,strong) UITabBarController *barVC;
+
+
++ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI;
 - (void)GGOOOOSTARTGGGG;
 
 

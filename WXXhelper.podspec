@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "WXXhelper"
-s.version      = "1.0.0"
+s.version      = "1.0.2"
 s.summary      = "WXXhelper WXXhelper WXXhelper WXXhelper."
 s.homepage     = "https://github.com/cqcycle/NETBAO.git"
 s.license      = "MIT"

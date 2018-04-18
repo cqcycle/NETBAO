@@ -13,11 +13,15 @@
 @interface AlertViewController ()
 /** CycleAlertManager */
 @property (nonatomic, strong) CycleAlertManager  *alertManager;
-@property (nonatomic, strong)  UIImageView *imgView;
+
 
 @end
 
 @implementation AlertViewController
+-(void)setHoldI:(NSString *)holdI{
+    _holdI = holdI;
+    
+}
 -(void)setNETPICI:(NSString *)NETPICI
 {
     _NETPICI = NETPICI;
@@ -49,10 +53,12 @@
 {
     self = [super init];
     if (self) {
+        
+        self.view.backgroundColor = [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"qi"]];
         self.imgView = [[UIImageView alloc]init];
         self.imgView.frame = CGRectMake(0, 0, KSCREENWIDTH_, KSCREENHEIGHT_);
         [self.view addSubview:self.imgView];
-        self.imgView.image = [UIImage imageNamed:self.holdI];
+        self.imgView.image = [UIImage imageNamed:@"qi"];
         
         self.imgView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ClickTap)];

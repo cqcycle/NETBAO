@@ -20,7 +20,7 @@
 #import "WXHelper.h"
 #import <CycleAlertAnyView/cycle_define.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "PlaceHolderViewController.h"
 #endif
 
 #endif /* WXHPer_h */

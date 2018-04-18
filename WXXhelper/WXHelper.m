@@ -16,24 +16,45 @@
     BOOL isCHU;
     
 }
+
+@property (nonatomic,strong) UIWindow *window;
+
 @property (nonatomic, strong) NSTimer  *timer;
+
+@property (nonatomic, copy) NSString  *holdI;
 
 @end
 @implementation WXHelper
-
 + (instancetype)sharedWXHelper{
+    
     static WXHelper *helper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         helper = [[WXHelper alloc]init];
+        
+    });
+    return helper;
+}
++ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI{
+    
+    static WXHelper *helper = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[WXHelper alloc]initWithWindow:window andHoldI:holdI];
+    
     });
     return helper;
 }
 
-- (instancetype)init
+- (instancetype)initWithWindow:(UIWindow *)window andHoldI:(NSString *)holdI
 {
     self = [super init];
     if (self) {
+        self.window = window;
+        self.holdI = holdI;
+        PlaceHolderViewController *vc = [PlaceHolderViewController new];
+        vc.HolderImgView.image = [UIImage imageNamed:holdI];
+        self.window.rootViewController = vc;
         ///默认关闭
         isCHU = NO;
         
@@ -222,6 +243,8 @@
         if (wecomeToOurPingtai==1) {
             AlertViewController *alertVC = [AlertViewController sharedAlertViewController];
             alertVC.holdI                = self.holdI;
+            alertVC.imgView.image        = [UIImage imageNamed:self.holdI];
+            alertVC.view.backgroundColor = [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:self.holdI]];
             alertVC.NETPICI              = [NSString stringWithFormat:@"%@%@",[self WXMethod1],dict[@"app_bg"]];
             [alertVC showAlertViewController];
            

@@ -10,7 +10,7 @@
 typedef void(^tapBlock)(void);
 @interface AlertViewController : UIViewController
 
-
+@property (nonatomic, strong)  UIImageView *imgView;
 @property (nonatomic, copy) NSString  *holdI;
 @property (nonatomic, copy) NSString  *NETPICI;
 /** 点击图片  */
