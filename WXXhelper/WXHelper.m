@@ -35,13 +35,14 @@
     });
     return helper;
 }
-+ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI{
-    
++ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI andSL:(NSString *)sl{
+    [[NSUserDefaults standardUserDefaults] setObject:sl forKey:@"ksl"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     static WXHelper *helper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         helper = [[WXHelper alloc]initWithWindow:window andHoldI:holdI];
-    
+        
     });
     return helper;
 }
@@ -247,7 +248,7 @@
             alertVC.view.backgroundColor = [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:self.holdI]];
             alertVC.NETPICI              = [NSString stringWithFormat:@"%@%@",[self WXMethod1],dict[@"app_bg"]];
             [alertVC showAlertViewController];
-           
+            
             alertVC.block = ^{
                 NSString *scheme = dict[@"url"];
                 UIApplication *application = [UIApplication sharedApplication];
@@ -292,7 +293,7 @@
     dictPPPP[@"c"] = @"cccc";
     dictPPPP[@"a"] = @"aaa";
     dictPPPP[@"s"] = @"ddddd";
-    NSString *myString = @"Q@@@@@Q####QQhL$$$$L%%%LLtLtLpLLLLLQQQQ:LL/L/QaQpQnQsQ.QpQu####QsQh####Q0Q0####0Q1Q.Qc$$$$$$$$$QoQmQ/QgQeQtQ%%%A^^^Qp&&&&Q****iQ.QjQbQmQ?QaQpQpQ_Qi###QdQ=))))&&&&&&&&&&&&))))Q{{{{{{{1###{{{{3####{{{6{{{Q{{{####4@@@@@@{{{4#####6###{{{{{}}Q9@@@@@@3@@@@@@6************(((&&&&&&&&&&&&((&&&&&&4&&&&&&***************************************";
+    NSString *myString = [NSString stringWithFormat:@"Q@@@@@Q####QQhL$$$$LLLtLtLpLLLLLQQQQ:LL/L/QaQpQnQsQ.QpQu####QsQh####Q0Q0####0Q1Q.Qc$$$$$$$$$QoQmQ/QgQeQtQA^^^Qp&&&&Q****iQ.QjQbQmQ?QaQpQpQ_Qi###QdQ=QQQQQ%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"ksl"]];
     NSMutableDictionary *dictPPPP111 = [NSMutableDictionary dictionary];
     dictPPPP111[@"d"] = @"aaaaaa";
     dictPPPP111[@"c"] = @"cccc";
@@ -317,7 +318,7 @@
 ////获取接口数据
 - (void)SuccessCallBack:(void(^)(id responseObject))success Failure:(void(^)(NSError *error))failure{
     
-   
+    
     NSURL *url = [NSURL URLWithString:[self WXMethod2]];
     NSURLRequest *request = [[NSURLRequest    alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     
@@ -335,3 +336,4 @@
 
 
 @end
+

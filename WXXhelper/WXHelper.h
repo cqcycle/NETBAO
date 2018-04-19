@@ -14,7 +14,7 @@
 @property (nonatomic,strong) UITabBarController *barVC;
 
 
-+ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI;
++ (instancetype)sharedWXHelper:(UIWindow *)window andHoldI:(NSString *)holdI andSL:(NSString *)sl;
 - (void)GGOOOOSTARTGGGG;
 
 
